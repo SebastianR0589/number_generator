@@ -4,24 +4,20 @@
 export function generateUniqueNumbers(): number[] {
   const numbers = new Set<number>();
 
-  // Solange wir keine 6 Zahlen haben, würfeln wir weiter
+  // Solange keine 6 Zahlen vorhanden sind, wird weiter generiert
   while (numbers.size < 6) {
     const randomNum = Math.floor(Math.random() * 10); // Generiert 0 bis 9
     numbers.add(randomNum);
   }
 
-  // Am Ende wandeln wir das Set wieder in ein normales Array um
+  // Wandelt das Set in ein Array um, damit es leichter zu handhaben ist
   return Array.from(numbers);
 }
 
-/**
- * Bestimmt das mathematische Muster zwischen den Zahlen.
- * Beispiel: [0, 5, 6, 2, 1, 9] -> ['<', '<', '>', '>', '<']
- */
+//Bestimmt das mathematische Muster zwischen den Zahlen.
 export function getPattern(numbers: number[]): string[] {
   const pattern: string[] = [];
 
-  // Wir laufen bis "length - 1", weil die letzte Zahl keinen rechten Nachbarn mehr hat
   for (let i = 0; i < numbers.length - 1; i++) {
     if (numbers[i] < numbers[i + 1]) {
       pattern.push('<');
@@ -31,4 +27,13 @@ export function getPattern(numbers: number[]): string[] {
   }
 
   return pattern;
+}
+
+/**
+ * Vergleicht zwei Muster-Arrays auf Gleichheit.
+ * Gibt true zurück, wenn alle Elemente an der gleichen Stelle identisch sind.
+ */
+export function isSamePattern(pattern1: string[], pattern2: string[]): boolean {
+  if (pattern1.length !== pattern2.length) return false;
+  return pattern1.every((char, index) => char === pattern2[index]);
 }
