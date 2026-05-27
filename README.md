@@ -50,3 +50,6 @@ src/
 
 5. Testen
 Gestartet werden kann die App durch npm run dev wonach die App unter http://localhost:3000 erreicht werden kann.
+
+6. Live-Demo
+https://sebastian-riedel-number-generator-p.vercel.app/
